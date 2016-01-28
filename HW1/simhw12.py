@@ -22,6 +22,3 @@ def g(x):
 
 result = sim(g, seed = 10, n = 10**9)
 print "result = %s" % result
-
-#Run command:
-#   time python <filename.py>
