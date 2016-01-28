@@ -1,0 +1,57 @@
+
+R version 3.1.3 (2015-03-09) -- "Smooth Sidewalk"
+Copyright (C) 2015 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin13.4.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> 
+> simulation <- function(g, seed, n = 1000000000) {
++   y <- runif(n, 0, 1)
++   sum <- sum(g(y))
++   sum/n
++ }
+> 
+> g <- function(x) {
++   return (1 - x)*x / (1 - 2*x + 2*x^2)^2
++ }
+> 
+> #system.time(result <- simulation(g, seed))
+> #Results:
+> #    user  system elapsed 
+> #  47.043  61.185 376.509 
+> 
+> simulation2 <- function(g, seed, n = 10^9) {
++   rep <- 1
++   if(n/10^7 > 1) {
++     rep <- n/10^7
++     n <- 10^7
++   }
++   
++   total <- 0
++   for(i in 1:rep) {
++     y <- runif(n, 0, 1)
++     total <- total + sum(g(y))
++   }
++   
++   total/(n*rep)
++ }
+> 
+> results <- simulation2(g, seed = 10)
+> 
+
+real	0m37.095s
+user	0m34.163s
+sys	0m2.749s

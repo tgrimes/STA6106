@@ -1,0 +1,3 @@
+(time ./simhw1) > outfile_c.txt 2>&1
+(time python simhw12.py) > outfile_py2.txt 2>&1
+(time r -f simhw1.r) > outfile_r.txt 2>&1

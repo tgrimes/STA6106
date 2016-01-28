@@ -1,0 +1,7 @@
+CPU time = 53.4532 s,
+Wall time = 54 s (only accurate to seconds)
+ans = 0.500003
+
+real	0m53.501s
+user	0m53.422s
+sys	0m0.035s
