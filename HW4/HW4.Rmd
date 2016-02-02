@@ -227,20 +227,20 @@ Let $K \sim binom(n, p)$, $x_i \sim \text{iid } exp(\lambda)$, and $S_k = \sum_1
 Since our main interest is on $P(S_k > s)$, we need the marginal distirbution of $S_k$. Since $k$ is an integer, we can obtain the conditional cdf of $S_k$ by using integration by parts $k$ times:
 \[\begin{aligned}
 P(S_k \leq s,| K = k) &= \int_0^s \frac{1}{\lambda^k\Gamma(k)}x^{k-1}e^\frac{-x}{\lambda} dx \\
-&= 1 - \sum_{n=0}^(k-1) \frac{e^{\frac{-s}{\lambda}}}{n!} \left( \frac{s}{\lambda}\right)^n
+&= 1 - \sum_{n=0}^{k-1} \frac{e^{\frac{-s}{\lambda}}}{n!} \left( \frac{s}{\lambda}\right)^n
 \end{aligned}.
 \]
 
 Now to obtain $P(S_k > s)$, we sum the joint distribution over the support of $K$
 \[\begin{aligned}
   P(S_k > s) &= \sum_{k=0}^{n} P(S_k > s, K = k) \\
-  &= \sum_{k=0}^{n} \sum_{m=0}^(k-1) \left[ \frac{e^{\frac{-s}{\lambda}}}{m!} \left( \frac{s}{\lambda}\right)^m \right] {n \choose k}(p)^k(1-p)^{n-k}
+  &= \sum_{k=0}^{n} \sum_{m=0}^{k-1} \left[ \frac{e^{\frac{-s}{\lambda}}}{m!} \left( \frac{s}{\lambda}\right)^m \right] {n \choose k}(p)^k(1-p)^{n-k}
   \end{aligned}
 \]
 
 Without any obvious ways to simplify this expression, we will leave the expression here. If we were to perform this calculation using $n=1000$ we would need to compute $1000!$. So instead, we will use an approximation and only sum from $n=0$ to $90$. While this is only a portion of the entire support of $k$, the probability that it is outside of this range is less than $10^-7$.
 
-$$P(S_k > 50000) \approx \sum_{k=0}^{90} \sum_{m=0}^(k-1) \left[ \frac{e^{\frac{-50000}{800}}}{m!} \left( \frac{50000}{800}\right)^m \right] {1000 \choose k}(0.05)^k(1-0.05)^{1000-k}$$
+$$P(S_k > 50000) \approx \sum_{k=0}^{90} \sum_{m=0}^{k-1} \left[ \frac{e^{\frac{-50000}{800}}}{m!} \left( \frac{50000}{800}\right)^m \right] {1000 \choose k}(0.05)^k(1-0.05)^{1000-k}$$
 
 ```{r}
 s <- 50000

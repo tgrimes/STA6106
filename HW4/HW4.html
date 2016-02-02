@@ -282,16 +282,16 @@ abline(v = 50000, col = &quot;red&quot;, main = &quot;Distirbution of 100000 mon
 \]</span></p>
 <p>Since our main interest is on <span class="math inline">\(P(S_k &gt; s)\)</span>, we need the marginal distirbution of <span class="math inline">\(S_k\)</span>. Since <span class="math inline">\(k\)</span> is an integer, we can obtain the conditional cdf of <span class="math inline">\(S_k\)</span> by using integration by parts <span class="math inline">\(k\)</span> times: <span class="math display">\[\begin{aligned}
 P(S_k \leq s,| K = k) &amp;= \int_0^s \frac{1}{\lambda^k\Gamma(k)}x^{k-1}e^\frac{-x}{\lambda} dx \\
-&amp;= 1 - \sum_{n=0}^(k-1) \frac{e^{\frac{-s}{\lambda}}}{n!} \left( \frac{s}{\lambda}\right)^n
+&amp;= 1 - \sum_{n=0}^{k-1} \frac{e^{\frac{-s}{\lambda}}}{n!} \left( \frac{s}{\lambda}\right)^n
 \end{aligned}.
 \]</span></p>
 <p>Now to obtain <span class="math inline">\(P(S_k &gt; s)\)</span>, we sum the joint distribution over the support of <span class="math inline">\(K\)</span> <span class="math display">\[\begin{aligned}
   P(S_k &gt; s) &amp;= \sum_{k=0}^{n} P(S_k &gt; s, K = k) \\
-  &amp;= \sum_{k=0}^{n} \sum_{m=0}^(k-1) \left[ \frac{e^{\frac{-s}{\lambda}}}{m!} \left( \frac{s}{\lambda}\right)^m \right] {n \choose k}(p)^k(1-p)^{n-k}
+  &amp;= \sum_{k=0}^{n} \sum_{m=0}^{k-1} \left[ \frac{e^{\frac{-s}{\lambda}}}{m!} \left( \frac{s}{\lambda}\right)^m \right] {n \choose k}(p)^k(1-p)^{n-k}
   \end{aligned}
 \]</span></p>
 <p>Without any obvious ways to simplify this expression, we will leave the expression here. If we were to perform this calculation using <span class="math inline">\(n=1000\)</span> we would need to compute <span class="math inline">\(1000!\)</span>. So instead, we will use an approximation and only sum from <span class="math inline">\(n=0\)</span> to <span class="math inline">\(90\)</span>. While this is only a portion of the entire support of <span class="math inline">\(k\)</span>, the probability that it is outside of this range is less than <span class="math inline">\(10^-7\)</span>.</p>
-<p><span class="math display">\[P(S_k &gt; 50000) \approx \sum_{k=0}^{90} \sum_{m=0}^(k-1) \left[ \frac{e^{\frac{-50000}{800}}}{m!} \left( \frac{50000}{800}\right)^m \right] {1000 \choose k}(0.05)^k(1-0.05)^{1000-k}\]</span></p>
+<p><span class="math display">\[P(S_k &gt; 50000) \approx \sum_{k=0}^{90} \sum_{m=0}^{k-1} \left[ \frac{e^{\frac{-50000}{800}}}{m!} \left( \frac{50000}{800}\right)^m \right] {1000 \choose k}(0.05)^k(1-0.05)^{1000-k}\]</span></p>
 <pre class="r"><code>s &lt;- 50000
 n &lt;- 1000
 p &lt;- 0.05
