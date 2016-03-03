@@ -1,0 +1,109 @@
+---
+title: "STA 6106 Homework 6: MLE"
+author: "Tyler Grimes"
+date: "March 3, 2016"
+output: pdf_document
+---
+
+1. Let $x_1, ..., x_n$ represent a random sample from each of the distributions having the following probability density function. In each case find the MLE of $\theta$.  
+  a.  $f(x; \theta) = \frac{\theta^x e^{-\theta}}{x!}$, $x = 0, 1, 2, ...$, and $0 \leq \theta$ where $f(0, 0) = 1$  
+           
+      The likelihood function is  
+      $$L(\theta; x) = \prod_{i = 1}^{n} \frac{\theta^{x_i}e^{-\theta}}{x_i!}$$ 
+        
+      Taking the log, we obtain the log-likelihood  
+      $$\begin{aligned}
+        \ell(\theta; x) &= \sum_{i = 1}^{n} \left[ x_i \log(\theta) - \theta \log(e) - \log(x_i!) \right] \\
+        &= \log(\theta) \sum_{i = 1}^{n} x_i - n\theta - \sum_{i = 1}^{n} \log(x_i!)
+        \end{aligned}$$
+      
+      Take the derivative with respect to $\theta$  
+      $$\frac{d}{d\theta}\ell(\theta; x) = \frac{1}{\theta} \sum_{i = 1}^{n} x_i - n$$
+      
+      Now, set the derivative equal to $0$ and solve for $\hat{\theta}$  
+      $$\begin{aligned}
+        &\frac{d}{d\theta}\ell(\hat{\theta}; x) = 0 \\
+        \Rightarrow \ \ \ &\frac{1}{\hat{\theta}} \sum_{i = 1}^{n} x_i - n = 0 \\
+        \Rightarrow \ \ \ &\hat{\theta} = \frac{\sum_{i = 1}^{n} x_i}{n}
+        \end{aligned}$$
+      
+      
+      
+  b.  $f(x; \theta) = \theta x^{(\theta - 1)}$, $0 < x < 1$, and $\theta > 0$  
+           
+      The likelihood function is  
+      $$L(\theta; x) = \prod_{i = 1}^{n} \theta x_i ^{\theta - 1}$$ 
+        
+      Taking the log, we obtain the log-likelihood  
+      $$\begin{aligned}
+        \ell(\theta; x) &= \sum_{i = 1}^{n} \left[ \log(\theta) + (\theta - 1)\log(x_i) \right] \\
+        &= n\log(\theta) + \theta\sum_{i = 1}^{n}\log(x_i) - \sum_{i = 1}^{n} \log(x_i)
+        \end{aligned}$$
+      
+      Take the derivative with respect to $\theta$  
+      $$\frac{d}{d\theta}\ell(\theta; x) = \frac{n}{\theta} + \sum_{i = 1}^{n} \log(x_i)$$
+      
+      Now, set the derivative equal to $0$ and solve for $\hat{\theta}$  
+      $$\begin{aligned}
+        &\frac{d}{d\theta}\ell(\hat{\theta}; x) = 0 \\
+        \Rightarrow \ \ \ &\frac{n}{\hat{\theta}} + \sum_{i = 1}^{n}\log(x_i) = 0 \\
+        \Rightarrow \ \ \ &\hat{\theta} = -\frac{n}{\sum_{i = 1}^{n}\log(x_i)}
+        \end{aligned}$$  
+        
+        
+        
+        
+  c.  $f(x; \theta) = \frac{1}{\theta}e^{-x/\theta}$, $x > 0$, and $\theta > 0$  
+           
+      The likelihood function is  
+      $$L(\theta; x) = \prod_{i = 1}^{n} \frac{1}{\theta}e^{-\frac{x}{\theta}}$$ 
+        
+      Taking the log, we obtain the log-likelihood  
+      $$\begin{aligned}
+        \ell(\theta; x) &= \sum_{i = 1}^{n} \left[ -\frac{x_i}{\theta} - \log(\theta) \right] \\
+        &= -\frac{1}{\theta}\sum_{i = 1}^{n}x_i - n\log(\theta) 
+        \end{aligned}$$
+      
+      Take the derivative with respect to $\theta$  
+      $$\frac{d}{d\theta}\ell(\theta; x) = \frac{\sum_{i = 1}^{n} x_i}{\theta^2} - \frac{n}{\theta}$$
+      
+      Now, set the derivative equal to $0$ and solve for $\hat{\theta}$  
+      $$\begin{aligned}
+        &\frac{d}{d\theta}\ell(\hat{\theta}; x) = 0 \\
+        \Rightarrow \ \ \ &\frac{\sum_{i = 1}^{n} x_i}{\hat{\theta}^2} - \frac{n}{\hat{\theta}} = 0 \\
+        \Rightarrow \ \ \ &\hat{\theta} = \frac{\sum_{i = 1}^{n}x_i}{n}
+        \end{aligned}$$    
+      
+      
+      
+      
+  d. $f(x; \theta) = \frac{1}{2}e^{-|x - \theta|}$, $-\infty < x < \infty$, and $-\infty < \theta < \infty$  
+      
+      The likelihood function is  
+      $$L(\theta; x) = \prod_{i = 1}^{n} \frac{1}{2}e^{-|x_i - \theta|}$$ 
+        
+      Taking the log, we obtain the log-likelihood  
+      $$\begin{aligned}
+        \ell(\theta; x) &= \sum_{i = 1}^{n} \left[ -\log(2) - |x_i - \theta| \right] \\
+        &= -n\log(2) - \sum_{i = 1}^{n}|x_i - \theta| 
+        \end{aligned}$$
+      
+      The log-likelihood is maximized when $\sum_{i = 1}^{n}|x_i - \theta|$ is minimized. It is well known that  
+      $$\sum_{i = 1}^{n}|x_i - \theta| \geq \sum_{i = 1}^{n}|x_i - m|$$
+      where $m$ is the median of the $x_i$'s. Hence, the MLE is $\hat{\theta} = m$
+      
+      
+      
+      
+  e.  $f(x; \theta) = e^{-(x-\theta)}$, $x \geq \theta$
+           
+      The likelihood function is  
+      $$\begin{aligned}
+        L(\theta; x) &= \prod_{i = 1}^{n} e^{-(x-\theta)}I_{(x_i \geq \theta)} \\
+        &= \prod_{i = 1}^{n} e^{-(x-\theta)}I_{(\min(x_i) \geq \theta)}
+        \end{aligned}$$ 
+        
+      Taking the log, we obtain the log-likelihood  
+      $$\ell(\theta; x) = \sum_{i = 1}^{n} -(x_i - \theta), \ \ \ \theta \leq \min(x_i)\\$$
+      
+      To maximize $\ell(\theta; x)$, we need $(x_i - \theta)$ to be small. So, we pick the largest possible value for $\hat{\theta}$. Since $\hat{\theta}$ must satisfy $\hat{\theta} \leq \min(x_i)$, we choose $\hat{\theta}$ to be this upper bound. Hence, the MLE is $\hat{\theta} = min(x_i)$.
