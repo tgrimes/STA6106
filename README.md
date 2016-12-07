@@ -7,8 +7,8 @@
   HW5: Randomization test.  
   HW6: Maximum likelihood estimation.  
   HW7: EM algorithm.  
-  HW9: Gibbs sampling.
-  Project 1: Assessing the inear congruential generator.
-  Project 2: Double bootstrap for confidence interval of mean.
-  Project 3: Randomization test for difference in means.
-  Project 4: EM algorithm on mixture of normals.
+  HW9: Gibbs sampling.  
+  Project 1: Assessing the inear congruential generator.  
+  Project 2: Double bootstrap for confidence interval of mean.  
+  Project 3: Randomization test for difference in means.  
+  Project 4: EM algorithm on mixture of normals.  
